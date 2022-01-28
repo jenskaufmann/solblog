@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "name": "solblog",
   "instructions": [
     {
@@ -92,5 +92,8 @@
         ]
       }
     }
-  ]
+  ],
+  "metadata": {
+    "address": "HxEZuWZDAX6ZXfL6ic2A9CPins5oVrnKx44Abi8fusHt"
+  }
 }

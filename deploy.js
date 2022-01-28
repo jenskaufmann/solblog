@@ -51,12 +51,18 @@ function readKeyfile(keypairfile) {
 
         spawn.sync("anchor", ["build"], { stdio: "inherit" })
 
-        programAuthorityKeypair = new Keypair()
-        let signature = await connection.requestAirdrop(
-            programAuthorityKeypair.publicKey,
-            LAMPORTS_PER_SOL * 5
-        )
+        let programAuthorityKeypair = new Keypair();
+        let signature = await connection.requestAirdrop(programAuthorityKeypair.publicKey, LAMPORTS_PER_SOL * 2)
         await connection.confirmTransaction(signature)
+        await sleep(10000);
+        //need more
+        let signature2 = await connection.requestAirdrop(programAuthorityKeypair.publicKey, LAMPORTS_PER_SOL * 2)
+        await connection.confirmTransaction(signature2)
+        await sleep(10000);
+
+        // need more
+        let signature3 = await connection.requestAirdrop(programAuthorityKeypair.publicKey, LAMPORTS_PER_SOL * 2)
+        await connection.confirmTransaction(signature3)
 
         console.log(`\n\n\⚙️ Created keypair.\n`)
         console.log(`\n\n\⚙️ Saving keypair. ${programAuthorityKeypairFile}\n`)
@@ -104,3 +110,10 @@ function readKeyfile(keypairfile) {
         }
     )
 })()
+
+
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
